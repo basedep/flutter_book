@@ -1,0 +1,27 @@
+name: flutter_book
+description: "A new Flutter project."
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  scoped_model: 2.0.0 #управление состоянием во всем приложении
+  sqflite: 2.0.0  #БД
+  path_provider: 2.0.0 #для фалйловой системы
+  flutter_slidable: 2.0.0 #для упарвление свайпом
+  intl: ^0.17.0 #для форматирования даты и времени
+  image_picker: 1.0.0 #для добваления аватарки для контактов
+  flutter_calendar_carousel: ^2.0.0 #для календаря
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
