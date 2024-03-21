@@ -1,24 +1,54 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import "dart:io";
+import "package:flutter/material.dart";
+import "package:path_provider/path_provider.dart";
+import "notes/Notes.dart";
+import "utils.dart" as utils;
 
 void main() {
-  runApp(const MyApp());
+
+  startUp() async{
+    Directory documentsDirectory = await getApplicationDocumentsDirectory();
+    utils.documentsDirectory = documentsDirectory;
+    runApp(const FlutterBook());
+  }
+
+  startUp();
+
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class FlutterBook extends StatelessWidget {
+  const FlutterBook({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const Center(
-        child: Text("Hello"),
+    return  MaterialApp(
+      home: DefaultTabController(
+          length: 4,
+          child: Scaffold(
+            appBar: AppBar(
+              title: const Text("FlutterBook"),
+              bottom: const TabBar(
+                tabs: [
+                  Tab(icon: Icon(Icons.date_range), text: "Встречи",),
+                  Tab(icon: Icon(Icons.date_range), text: "Контакты",),
+                  Tab(icon: Icon(Icons.date_range), text: "Заметки",),
+                  Tab(icon: Icon(Icons.date_range), text: "Задачи",),
+                ],
+              ),
+            ),
+            body: TabBarView(
+              children: [
+                Notes()
+              ]
+            ),
+          )
       ),
     );
   }
+
+
 }
