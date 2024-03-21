@@ -20,7 +20,7 @@ class NotesDBWorker {
 
   Future<Database> init() async {
 
-    String path = join(utils.docsDir!.path, "notes.db");
+    String path = join(utils.documentsDirectory!.path, "notes.db");
     Database db = await openDatabase(path, version : 1, onOpen : (db) { },
         onCreate : (Database inDB, int inVersion) async {
           await inDB.execute(
